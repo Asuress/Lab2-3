@@ -8,7 +8,7 @@
 
 
 
-float MyAwesomeFunction(SDL_Point arg)
+float MyFunction(SDL_Point arg)
 {
     const SDL_Point circlePos1{ 200, 200 };
     const float circleRadius1 = std::max(400, 600) / 10;
@@ -23,7 +23,7 @@ float MyAwesomeFunction(SDL_Point arg)
     float c2 = Functions::Circle(circlePos2, circleRadius2, arg);
     float c3 = Functions::Circle(circlePos3, circleRadius3, arg);
     float c4 = Functions::Circle(circlePos4, circleRadius4, arg);
-    float res = Functions::ROr(Functions::ROr(c1, c2), Functions::ROr(c3, c4));
+    float res = Functions::ROr(Functions::ROr(c1, c3), Functions::RAnd(c2, c4));
 
     return res;
 }
@@ -34,7 +34,7 @@ public:
     Window(SDL_Point windowSize) :
         AppWindow(windowSize),
         texture(GetRenderer(), windowSize),
-        calculator(&MyAwesomeFunction) // передаем функцию которую будем рассчитывать
+        calculator(&MyFunction) // передаем функцию которую будем рассчитывать
     {
         ComputeFunction();
     }
